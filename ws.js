@@ -218,7 +218,7 @@ wss.on("connection", (ws, req) => {
 
 /* Starting MySQL events listener */
 const app = async () => {
-  const connection = mysql.createConnection({
+  const connection = mysql.createPool({
     host: process.env.DB_BRB_SERVER,
     user: process.env.DB_BRB_USERNAME,
     database: process.env.DB_BRB_DATABASE,
