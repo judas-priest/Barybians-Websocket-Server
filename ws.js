@@ -223,6 +223,7 @@ const app = async () => {
     user: process.env.DB_BRB_USERNAME,
     database: process.env.DB_BRB_DATABASE,
     password: process.env.DB_BRB_PASSWORD,
+    port: 3306,
   })
   const instance = new MySQLEvents(connection, {
     startAtEnd: true,
