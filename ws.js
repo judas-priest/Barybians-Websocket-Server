@@ -134,7 +134,8 @@ class Server {
 		ws.on('message', this.handleMessage.bind(this, ws))
 		ws.on('error', this.handleError.bind(this))
 		ws.onclose = (e) => {
-			console.log('\x1b[35m%s\x1b[0m', `Client ${ws.id ?? ''} has disconnected! [${e.code}]`)
+			console.log('\x1b[35m%s\x1b[0m', `Client ${ws.id ?? ''} has disconnected! [${e.code !== undefined ? e.code : e}]`);
+
 		}
 	}
 
@@ -162,6 +163,9 @@ class Server {
 					})
 						.then((res) => {
 							console.log(`Sent by id${ws.id} to id${recieverId}`)
+              console.log(res.data)
+							//this.sendToClient(ws, res.response.data)
+              
 						})
 						.catch((res) => {
 							this.sendToClient(ws, res.response.data)
